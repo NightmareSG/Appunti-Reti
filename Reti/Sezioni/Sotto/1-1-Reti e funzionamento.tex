@@ -1,0 +1,106 @@
+\documentclass{subfiles}
+\begin{document}
+    Internet può essere descritto come una rete di calcolatori interconnessi e composta da:
+    \begin{itemize}
+        \item Host, sistemi terminali, ovvero dispositivi della rete;
+        \item Comunication Link, ovvero una rete di collegamento (costituita da fili di rame, fibre ottiche ecc) 
+        dotata di velocità di trasmissione e lunghezza di banda;
+        \item Commutatori di pacchetti, ovvero ulteriori dispositivi che inoltrano i pacchetti;
+        \item ISP, Internet Service Provider, attraverso i quali si accede ad Internet;
+        \item Protocolli di comunicazione, che controllano invio e ricezione dei messaggi.
+    \end{itemize}
+    
+\subsubsection{Accesso alle informazioni}
+    Esistono diversi modelli con funzioni diverse per lo scambio di informazioni.
+    
+    \paragraph{Modello Client-Server}
+    Il modello Client-Server, che è alla base delle applicazioni network, è utilizzato 
+    per l'accesso alle risorse dell'Internet.
+    Vi sono:
+    \begin{itemize}
+        \item Client: colui che richiede le informazioni o qualsiasi servizio di rete;
+        \item Server: colui che fornisce le informazioni o qualsiasi servizio di rete.
+    \end{itemize}
+    In esso sono coinvolti almeno due processi:
+    \begin{itemize}
+        \item il processo client che manda un messaggio, attraverso la rete, al processo server e resta in attesa di una risposta;
+        \item il processo server che, una volta ricevuta una richiesta, esegue il lavoro/recupera dati e restituisce la risposta 
+        al processo client.
+    \end{itemize}
+
+    \paragraph{Peer to Peer}
+    Nel modello P2P ogni elaboratore può assumere il ruolo sia di client che di server. Data la multifunzionalità degli elaboratori, 
+    essi hanno un proprio database delle informazioni quindi non sono necessari server dedicati. Utile al file sharing o telefonia 
+    internet.
+
+    \paragraph{Comunicazioni da persona a persona}
+    Grazie al programma talk di UNIX si sono potute sviluppare applicazioni per la comunicazione tra persone come: instant message, 
+    email, wiki, ecc.
+
+\subsubsection{Tipologie delle reti}
+    Le reti si possono distinguere per l'accesso a dei tipi di dati. Vi sono:
+    \begin{itemize}
+        \item Rete di accesso a banda larga e mobile;
+        \item Reti di distribuzioni per contenuti o data center: esse muovono grandi quantità di dati tra i server tramite banda 
+        trasversale ed inoltre sfruttano le CDN(Content Delivery Network) per connettere l'utente richiedente con il server più vicino;
+        \item Reti di transito per l'accesso ai data center, può capitare che il servizio richiesto non risieda nella propria rete 
+        quindi esso deve attraversare internet dal data center alla rete di accesso per poi finire nel dispositivo richiedente;
+        \item Reti aziendali, che permette il file sharing tra dispositivi della rete.
+    \end{itemize}
+    NOTA: i contenuti sono replicati in un singolo CDN e per decidere quale copia 
+    servire si tiene conto della distanza tra client e replica, carico su ciascun server 
+    della CDN e traffico e congestione della rete.
+
+\subsubsection{Tecnologia di rete}
+    Come già accennato, le reti possono differire per ampiezza del raggio d'azione. Abbiamo:
+
+    \paragraph{PAN}
+    Le reti PAN connettono i dispositivi entro un raggio molto piccolo. Un esempio sono le reti che consentono la connessione di 
+    periferiche al computer. Solitamente viene adottato il paradigma master-slave, dove il computer funge da master e comunica con le 
+    periferiche con informazioni come indirizzi da usare, frequenza ecc.
+
+    \paragraph{LAN}
+    le reti LAN sono reti private in grado di operare all'interno o nelle vicinanze di un edificio. Consentono connettere tra loro gli 
+    elaboratori tramite due tipi di connessione:
+    \begin{itemize}
+        \item LAN wireless: ogni PC è dotato di ricevitore radio e antenna e si connette agli altri tramite Access Point, router o 
+        direttamente tramite configurazione mesh (reti simili a quelle wi fi di casa con punti di accesso simili);
+        \item LAN cablata: usato diverse tecnologie di trasmissione. Sono estremamente veloce con una latenza molto bassa e quasi 
+        assenza di errori di trasmissione. 
+    \end{itemize}
+
+    \paragraph{MAN}
+    Le MAN sono reti che ricropono un'intera città. In esse i segnali vengono inseriti nella stazione di testa centralizzata per la 
+    successiva distribuzione.
+
+    \paragraph{WAN}
+    Le WAN ricoprono un'area geografica molto estesa, spesso una nazione o un continente. La rete è costituita da:
+    \begin{itemize}
+        \item Host e PC delle varie sedi;
+        \item Subnet formata da linee di trasmissione e elementi di commutazione, generalmente router e/o switch. Quest'ultimi, 
+        all'arrivo dei dati, devono scegliere la linea di uscita tramite forwarding e inoltrare i dati su di essa.
+    \end{itemize}
+    La maggior parte delle volte, le WAN sono formate da reti connesse da coppie di router. Per la comunicazione tra due si applicano 
+    degli algoritmi di routing per trovare i percorsi e scegliere quello migliore.
+
+    \paragraph{Internetwork}
+    Date le differenze hardware/software tra le reti, si deve trovare un adattamento per poter effettuare la loro connessione, questo è 
+    detto gateway. Quindi possiamo definire una internetwork come una rete di reti connesse tra di loro distinte e indipendenti.
+
+
+\subsubsection{Architettura di Internet}
+    Per collegarsi ad Internet, bisogna effettuare una conessione ad un ISP che fornisce diversi tipi di accesso (TV, fibre ottiche, DSL). 
+    Una volta connessi all'ISP i nostri dati attraversano diversi ISP, tramite store \& forward, fino a quello del ricevente.\\
+    Gli ISP sono dotati di un POP, Point of Presence, che permette appunto la connessione ad essi. Tale connessione può avvenire con:
+    \begin{itemize}
+        \item Peering Point: i router degli ISP sono connessi a coppie, utile per ISP molto estese;
+        \item NAP: Neutral Access Point: i router hanno possono avere più di una connessione.
+    \end{itemize}
+    Gli ISP adottano una gerarchia a 3 livelli:
+    \begin{itemize}
+        \item ISP Tier 1: essi formano la dorsale di Internet, quindi tutti devono connettersi a loro per raggiungere il resto 
+        dell'Internet, non pagano quindi il transito;
+        \item ISP Tier 2: detti ISP regionali data la loro copertura, si connettono a Tier 1, pagando il transito, e altri Tier 2;
+        \item ISP Tier 3: detti anche di accesso o last hop network. Sono i primi ISP a cui si effettua normalmente l'accesso.
+    \end{itemize}
+\end{document}

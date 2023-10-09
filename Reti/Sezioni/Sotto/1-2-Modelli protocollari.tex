@@ -1,0 +1,157 @@
+\documentclass{subfiles}
+\begin{document}
+    Un protocollo definisce il formato e l'ordine dei messaggi scambiati tra più entità in comunicazione, così come le azioni in fase 
+    di trasmissione e/o ricezione.
+    
+\subsubsection{Progettazione}
+    Nella progettazione di un protocollo si devono garantire affidabilità e evolvibility.
+
+    \paragraph{Affidabilità}
+    L'affidabilità di un protocollo è definità da:
+    \begin{itemize}
+        \item Capacità di ripristino dagli errori o guasti tramite error detection e error correction;
+        \item Asseganzione delle risorse in maniera dinamica in base alle necessità tramite statistical multiplexing;
+        \item Controllo del flusso affinché non vi sia un'inondazione di informazioni;
+        \item Congestione, dovuta al traffico eccessivo di dati che la rete non riesce a gestire, non garantendo la consegna dei 
+        pacchetti. 
+    \end{itemize}
+
+    \paragraph{Evolvibility}
+    L'evolvibility consiste in:
+    \begin{itemize}
+        \item Implementazioni sia incrementali che scalari tramite protocol layering;
+        \item identificazione di chi trasmette e riceve un messaggio. Questa procedura è detta Addressing nei livelli bassi e Naming 
+        nei livelli alti.
+    \end{itemize}
+
+\subsubsection{Stratificazione}
+    Una volta definito il sistema, si ricorre ad un modello di servizio per definire le operazioni possibili. Si individuano dei livelli, 
+    ognuno dei quali implementa uno specifico servizio tramite operazioni che utilizzano servizi dello stesso livello o di un livello 
+    inferiore. Ciò rende possibile identificare e relazionare elementi del sistema in modo da introdurre un modello di riferimento. 
+    Questa procedura modulare facilita: progettazione, gestione e aggiornamento del sistema, implementazione di ulteriori servizi in 
+    maniera trasparente a quelli già presenti.
+
+\subsubsection{Architettura di rete}
+    La maggior parte delle reti sono organizzate a livelli, ognuno dei quali offre servizi diversi ai livelli superiori. Ovviamente i 
+    dati non sono trasferiti da un livello di una macchina allo stesso di un'altra in maniera diretta bensì passano attraverso i livelli 
+    sottostanti fino al primo livello, il supporto fisico, che mette in atto la vera comunicazione e trasferimento.
+    Tra ciascun livello vi è un'interfaccia che definsice le operazioni e servizi offerti dal livello inferiore a quello superiore.
+
+    \begin{Note*}
+        l'insieme dei protocolli usati da un sistema è detto protocol stack, che insieme ai livellli definisce la network architecture.
+    \end{Note*}
+
+    \paragraph{Impacchettamento dati}
+    Come già detto i dati per essere trasmessi devono attraversare i livelli sottostanti. Durante questi passaggi vengono aggiunte 
+    delle informazioni. Tra esse vi è l'header, aggiunto durante il primo attraversamento, che contiene un identificativo e
+    informazioni per la consegna.
+    \\ \\
+    Possono essere imposti limiti dai protocolli come per la dimensione che porta a dover suddividere il messaggio in pacchetti dotati 
+    di header e trailer. Una volta arrivati al destinatario il messaggio risale i vari livelli rimuovendo le informazioni aggiuntive e 
+    consegnando il messaggio.    
+
+\subsubsection{Connessione e affidabilità}
+        Ogni livello offre a quello superiore due tipi di servizi e vari livelli di affidabilità. I servizi di connessione vengono 
+        distinti tra orientati alla connessione e senza connessione.
+    \begin{itemize}
+        \item Orientato alla connessione: viene stabilita prima una connessione, durante la quale le due parti concordano i parametri da 
+        usare(dimensione, qualità ecc), e una volta usata la si rilascia. I pacchetti arrivano a destinazione nell'ordine in cui sono 
+        stati trasmessi;
+        \item Senza connessione: anche detto datagram, ogni pacchetto ha l'indirizzo di destinazione ed è instradato in maniera 
+        indipendente dagli altri pacchetti. Nel caso in cui il messaggio deve passare per altri nodi prima di arrivare a destinazione, 
+        ogni nodo applicherà un approccio store \& forward.
+    \end{itemize}
+    Per quanto riguarda l'affidabilità di un servizio si intende la capacità di non perdere dati e consegnarli nell'ordine giusto. 
+    Generealmente quindi si opta per un servizio orientato alla connessione con conferme di ricezione, che però possono appesantire 
+    il sistema e causare ritardi. Alcune tecniche sono:
+    \begin{itemize}
+        \item message sequence: vengono rispettati i confini dei messaggi;
+        \item byte stream: la connessione è un flusso di byte senza alcuna divisione.
+    \end{itemize}
+
+\subsubsection{Primitive di servizio}
+    Un servizio è formalmente descritto da un insieme di primitive, operazioni, che permettono di accedere al servizio. Questi set di 
+    primitive differiscono in base al tipo di servizio, con o senza connessione.
+    Tra quelle conosciute vi sono:
+    \begin{itemize}
+        \item LISTEN: attesa bloccante di una connessione in arrivo, indica che un server è pronto ad accettare una connessione;
+        \item CONNECT: stabilisce una connessione con un peer in attesa, va specificato a chi connettersi, il client manda un pacchetto 
+        e resta sospeso finché non riceve risposta;
+        \item ACCEPT: accetta una richiesta di connessione da un peer, restituendo una risposta al client sbloccandolo;
+        \item RECEIVE: attesa bloccante per un messaggio in arrivo, blocca il server in attesa di richieste;
+        \item SEND: manda un messaggio dal peer al server e viceversa, sblocca il server per eseguire la richiesta o sblocca il client 
+        per esaminare la risposta;
+        \item DISCONNECT: termine della connessione, è una chiamata bloccante che sospende il client e spedisce un pacchetto al server 
+        per rilasciare la connessione, il server esguirà una DISCONNECT per confermare l'operazione.
+    \end{itemize}
+\clearpage
+    
+\subsubsection{Protocolli non proprietari}
+    L'impossibilità a comunicare tra reti diverse fece sviluppare due pile protocollari per creare uno standard di comunicazione. 
+    Nacquero il TCP/IP e ISO/OSI.
+
+    \paragraph{ISO/OSI}
+    L'ISO/OSI è una pila protocollare strutturata in 7 livelli, dall'alto 3 orientati al contenuto dell'informazione e 4 orientati 
+    alla rete. Si ha:
+    \begin{itemize}
+        \item Livello applicazione: si occupa della gestione della comunicazione delle applicazioni;
+        \item Livello presentazione: si occupa della gestione della sintassi e codifica dei dati anche con codifiche diverse;
+        \item Livello Sessione: si occupa di gestire le sessioni di utenti su macchine diverse, ovvero:
+            \begin{itemize}
+                \item organizza il dialogo tra due terminali;
+                \item effettua il controllo del dialogo, uni o bidirezionale;
+                \item gestisce la sicronizzazione.
+            \end{itemize}
+        \item Livello trasporto: si occupa di:
+            \begin{itemize}
+                \item trasferimento dati da sorgente a destinatario;
+                \item gestione connessioni multiple;
+                \item gestione canale punto-punto o senza garanzia dui dati;
+                \item invio del messaggio a più destinazioni;
+                \item frammentazione flusso in frame;
+                \item correzione errori e prevenzione congestione.
+            \end{itemize}
+        \item Livello rete: si occupa di:
+            \begin{itemize}
+                \item instradare pacchetti in maniera dinamica o statica;
+                \item congestione e qualità servizio.
+            \end{itemize}
+        \item Livello collegameto: datalink, si occupa di creare dei frame per la trasmissione tra elementi della rete locale e 
+        e controllo degli errori e del flusso;
+        \item Livello fisico: interfacce meccaniche ed elettriche per la trasmissione dei bit tramite canale di comunicazione.
+    \end{itemize}
+    Quindi questo modello è utilizzabile per la progettazione di un applicativo di rete.
+
+    \paragraph{TCP/IP}
+    Lo standard TCP/IP è diviso in 5 livelli:
+    \begin{itemize}
+        \item Applicazione: per i servizi;
+        \item Trasporto: per il trasferimento dati host-host e può essere TCP, connection oriented, o UDP, connectionless;
+        \item Rete o Internet: per l'instradamento dei datagram e protocolli di routing;
+        \item Data Link o Collegamento: per il trasferimento dei frame lungo i mezzi di comunicazione;
+        \item Fisico: trasferimento dei bit per mezzi fisici.
+    \end{itemize}
+    NOTA: I livelli di presentazione e sessione del modello OSI vengono compensati dal sistema operativo del modello TCP.
+    \lineskip
+    \lineskip
+    \paragraph{Comunicazione}
+    \begin{itemize}
+        \item Comunicazione fisica: i dati seguendo un percorso fisico scendono la pila protocollare e dal mezzo fisico vengono 
+        instradati al destinatario e risalgono fino al rispettivo livello di partenza;
+        \item Comunicazione logica: ogni livello è distribuito in entità, ognuna delle quali implementano delle funzionalità, che 
+        scambiano messaggi solo con i loro pari.
+    \end{itemize}
+    
+    \paragraph{Incapsulamento}
+    L'incapsulamento è un processo attuato nel trasferimento dei dati. Dato il sistema di riferimento, ogni livello prende i dati dal 
+    livello superiore, aggiunge un header per creare una nuova unità dati (PDU, Protocol Data Unit) e la passa al livello sottostante.
+    
+    \paragraph{Dati}
+    I dati assumono nomi diversi in base al livello:
+    \begin{itemize}
+        \item Applicazione: messaggio o stream;
+        \item Trasporto: segmenti o pacchetti;
+        \item Rete: datagram;
+        \item Collegamento: frame o trame.
+    \end{itemize}
+\end{document}
