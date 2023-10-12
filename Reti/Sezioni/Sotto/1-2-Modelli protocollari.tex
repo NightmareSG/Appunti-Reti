@@ -69,6 +69,14 @@
         \item byte stream: la connessione è un flusso di byte senza alcuna divisione.
     \end{itemize}
 
+    \paragraph{Comunicazione}
+    \begin{itemize}
+        \item Comunicazione fisica: i dati seguendo un percorso fisico scendono la pila protocollare e dal mezzo fisico vengono 
+        instradati al destinatario e risalgono fino al rispettivo livello di partenza;
+        \item Comunicazione logica: ogni livello è distribuito in entità, ognuna delle quali implementano delle funzionalità, che 
+        scambiano messaggi solo con i loro pari.
+    \end{itemize}
+
 \subsubsection{Primitive di servizio}
     Un servizio è formalmente descritto da un insieme di primitive, operazioni, che permettono di accedere al servizio. Questi set di 
     primitive differiscono in base al tipo di servizio, con o senza connessione.
@@ -84,7 +92,6 @@
         \item DISCONNECT: termine della connessione, è una chiamata bloccante che sospende il client e spedisce un pacchetto al server 
         per rilasciare la connessione, il server esguirà una DISCONNECT per confermare l'operazione.
     \end{itemize}
-\clearpage
     
 \subsubsection{Protocolli non proprietari}
     L'impossibilità a comunicare tra reti diverse fece sviluppare due pile protocollari per creare uno standard di comunicazione. 
@@ -131,16 +138,10 @@
         \item Data Link o Collegamento: per il trasferimento dei frame lungo i mezzi di comunicazione;
         \item Fisico: trasferimento dei bit per mezzi fisici.
     \end{itemize}
-    NOTA: I livelli di presentazione e sessione del modello OSI vengono compensati dal sistema operativo del modello TCP.
-    \lineskip
-    \lineskip
-    \paragraph{Comunicazione}
-    \begin{itemize}
-        \item Comunicazione fisica: i dati seguendo un percorso fisico scendono la pila protocollare e dal mezzo fisico vengono 
-        instradati al destinatario e risalgono fino al rispettivo livello di partenza;
-        \item Comunicazione logica: ogni livello è distribuito in entità, ognuna delle quali implementano delle funzionalità, che 
-        scambiano messaggi solo con i loro pari.
-    \end{itemize}
+    
+    \begin{Note*}
+        I livelli di presentazione e sessione del modello OSI vengono compensati dal sistema operativo del modello TCP.
+    \end{Note*}
     
     \paragraph{Incapsulamento}
     L'incapsulamento è un processo attuato nel trasferimento dei dati. Dato il sistema di riferimento, ogni livello prende i dati dal 

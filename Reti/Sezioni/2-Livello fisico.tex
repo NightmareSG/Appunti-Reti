@@ -1,0 +1,73 @@
+\documentclass{subfiles}
+\begin{document}
+    Per telecomunicazione si intende la comunicazione, quindi il trasferimenti dati, da un trasmettitore ad un ricevitore e posti ad 
+    una certa distanza. Si hanno quindi:
+    \begin{itemize}
+        \item Sorgente: elaboratore che invia il messaggio tramite una sorgente(voe, testo, video ecc);
+        \item Trasmettitore: codifica il messaggio trasformandolo in un segnale e lo invia;
+        \item Canale di trasmissione: il mezzo con il quale viaggia il messaggio;
+        \item Ricevitore: riceve il segnale e lo decodifica facendolo tornare nel formato originale;
+        \item Destinatario: elaboratore che riceve il messaggio.
+    \end{itemize}
+
+    \paragraph*{Segnali}
+    \noindent Un segnale è una variazione temporale dello stato fisico di un sistema o una grandezza scalare come il potenziale nei segnali 
+    elettrici o l'ampiezza d'onda o la frequenza di un campo elettromagnetico.\\
+    La natura di un segnale quindi può essere:
+    \begin{itemize}
+        \item Elettrica: inviato tramite un conduttore;
+        \item Luce: inviato tramite fibre ottiche;
+        \item Onde radio: inviato tramite l'etere.
+    \end{itemize}
+    In tutti i casi si propaga sotto forma di onda elettromagnetica.
+
+    \paragraph*{Basi teoriche dei segnali}
+    I segnali sono periodi caratterizzati quindi da:\begin{itemize}
+        \item ampiezza: valore assoluto della cresta positiva o negativa;
+        \item periodo: tempo che intercorre tra due valori di massimo (o minimo);
+        \item frequenza: quante volte si ripete il valore massimo in un secondo.
+    \end{itemize}
+    La funzione caratteristica di un'onda è: %y = A*sen((2*pi*f*t + f(0)) = A*sen((2*pi)/T + f(0)) con:
+    \begin{itemize}
+        \item A: ampiezza;
+        \item f(0): posizione segnale all'istante 0;
+        \item T: periodo;
+        \item f: 1/T, frequenza, reciproco del periodo.
+    \end{itemize}
+    Se il canale trasmissivo è lineare allora vale il principio di sovrapposizione:\\
+    %se x1(t)>=y1(t) e x2(t)>=y2(t) e x3(t)>=y3(t) => x1(t)+x2(t)+x3(t) >= y1(t)+y2(t)+y3(t) \\
+    Quindi la somma di onde sinusoidali con frequenze multiple tra loro è ancora un segnale sinusoidale periodico.
+    \begin{Note*}
+        Le frequenze sono dette armoniche e la frequenza più bassa è detta fondamentale.
+    \end{Note*}
+    Tramite Fourier si scoprì che una funzione periodica di periodo T può essere rappresentata come combinazione di un certo numero 
+    di funzioni sinusoidali e ciò è detta serie/trasformata di Fourier.\\ \\
+    Ciò aiuta a scomporre una qualsiasi onda in componenti più semplici. Si ha che: 
+    %g(t)=a0/2 + sum(n=1 to +inf)(an*sen(omega*n*t)+ bn*cos(omega*n*t)) con omega = 2*pi*f
+    dove an e bn sono le ampiezze dell'n-esima armonica e si ottengono integrando tra 0 e T:
+    %an= 2/T * int(-T/2 to T/2)(g(t)*sen(omega*n*t))dt
+    %bn= 2/T * int(-T/2 to T/2)(g(t)*cos(omega*n*t))dt
+    I canali che utilizzano segnale elettrici si comportano in modo lineare quindi è possibile applicare l'analisi di Fourier. Questo è 
+    utile a capire dopo quanto tempo un segnale di degrada a tal punto da influenzare la corretta codifica.
+
+    \paragraph*{Larghhezza di banda(bandwidth)}
+    Per una data frequenza di taglio fc, la largehzza di banda è il limite di velocità con cui si può trasmettere in un canale senza 
+    incorrere in perdite di segnale.\\
+    La bandwidth si misura in:
+    \begin{itemize}
+        \item Hertz: larghezza di banda in circuiti analogici, numero di oscillazioni di un segnale periodico in un secondo;
+        \item Baud: velocità di segnalazione, numero di cambiamenti del segnale in un secondo;
+        \item Bps (bit per second): larghezza di banda in circuiti digitali, numero di bit trasmessi al secondo.
+    \end{itemize}
+
+
+
+
+    \subsection{Mezzi trasmissivi}
+    \subfile{Sotto/2-1-Mezzi trasmissivi.tex}
+    \clearpage
+
+    \subsection{Trasmissioni digitali}
+
+    \subsection{Sistemi di telecomunicazioni}
+\end{document}
