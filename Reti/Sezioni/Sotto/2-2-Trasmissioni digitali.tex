@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    Per inviare segnali digitali si devono comunque utilizzare segnali analogici che vanno modulati digitalmente. Le tecniche utilizzate 
+    sono due:
+
+    \paragraph*{Trasmissione in banda base}
+    Consiste nell'uso di codifiche di linea come:
+    \begin{itemize}
+        \item NRZ (Non Return to Zero): poiché il segnale durante il traferimento può attenuarsi, il ricevente assegna i campioni ai 
+        simboli più vicini: tensione positiva sarà 1, tensione negativa sarà 0. Si sfruttando tecniche di line code, come il clock, per 
+        la migliore conversione dei bit appesantendo tuttavia la comunicazione;
+        \item codifica Manchester: miscela il segnale di clock e i dati usando uno XOR, inviando un singolo segnale;
+        \item NRZI (Non Return to Zero Inverted): si considera 1 come una transizione e lo 0 come situazione stazionaria;
+        \item codifica bipolare o AMI: si usano quelli che vengono detti segnali bilanciati, ovvero dove si presentano tante tensioni 
+        positive quanto negative su brevi periodi e quindi privi di componenti in corrente continua. Si usano due livelli di tensione 
+        (opposti) per l'1, alternandoli in modo tale che in media si annullano, e 0 Volt per rappresentare lo 0.
+    \end{itemize}
+
+    \paragraph*{Trasmissione in banda passante}
+    Una trasmissione che colloca un segnale confinato in una certa banda di frequenza arbitraria in modo da far coesistere diversi 
+    segnali sullo stesso canale prende il nome di trasmissione in banda passante.
+    
+\end{document}

@@ -27,7 +27,9 @@
         \item periodo: tempo che intercorre tra due valori di massimo (o minimo);
         \item frequenza: quante volte si ripete il valore massimo in un secondo.
     \end{itemize}
-    La funzione caratteristica di un'onda è: %y = A*sen((2*pi*f*t + f(0)) = A*sen((2*pi)/T + f(0)) con:
+    La funzione caratteristica di un'onda è: 
+        %y = A*sen((2*pi*f*t + f(0)) = A*sen((2*pi)/T + f(0)) 
+    con:
     \begin{itemize}
         \item A: ampiezza;
         \item f(0): posizione segnale all'istante 0;
@@ -43,14 +45,14 @@
     Tramite Fourier si scoprì che una funzione periodica di periodo T può essere rappresentata come combinazione di un certo numero 
     di funzioni sinusoidali e ciò è detta serie/trasformata di Fourier.\\ \\
     Ciò aiuta a scomporre una qualsiasi onda in componenti più semplici. Si ha che: 
-    %g(t)=a0/2 + sum(n=1 to +inf)(an*sen(omega*n*t)+ bn*cos(omega*n*t)) con omega = 2*pi*f
+    %g(t)=a0/2 + sum(n=1 to +inf)(an*sen(\omega*n*t)+ bn*cos(\omega*n*t)) con \omega = 2*pi*f
     dove an e bn sono le ampiezze dell'n-esima armonica e si ottengono integrando tra 0 e T:
     %an= 2/T * int(-T/2 to T/2)(g(t)*sen(omega*n*t))dt
     %bn= 2/T * int(-T/2 to T/2)(g(t)*cos(omega*n*t))dt
     I canali che utilizzano segnale elettrici si comportano in modo lineare quindi è possibile applicare l'analisi di Fourier. Questo è 
     utile a capire dopo quanto tempo un segnale di degrada a tal punto da influenzare la corretta codifica.
 
-    \paragraph*{Larghhezza di banda(bandwidth)}
+    \paragraph*{Larghezza di banda(bandwidth)}
     Per una data frequenza di taglio fc, la largehzza di banda è il limite di velocità con cui si può trasmettere in un canale senza 
     incorrere in perdite di segnale.\\
     La bandwidth si misura in:
@@ -60,14 +62,13 @@
         \item Bps (bit per second): larghezza di banda in circuiti digitali, numero di bit trasmessi al secondo.
     \end{itemize}
 
-
-
-
     \subsection{Mezzi trasmissivi}
     \subfile{Sotto/2-1-Mezzi trasmissivi.tex}
     \clearpage
 
     \subsection{Trasmissioni digitali}
+    \subfile{Sotto/2-2-Trasmissioni digitali.tex}
+    \clearpage
 
     \subsection{Sistemi di telecomunicazioni}
 \end{document}
