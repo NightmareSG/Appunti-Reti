@@ -1,0 +1,41 @@
+\documentclass{subfiles}
+\begin{document}
+    Possiamo suddividere l'accesso alla rete in due tipologie: residenziale o aziendale, e chiaramente varia anche il tipo di tecnologia 
+    utilizzata.
+    \begin{Note*}
+        Vi è un terzo tipo di accesso ovvero wireless su scala geografica con tecnologie e protocolli discussi successivamente.
+    \end{Note*}
+
+\subsubsection{Accesso residenziale}
+    Per l'accesso residenziale a banda larga si hanno Digital Subscriber Line (DSL), via cavo e Fiber To The X (FTTX) .
+
+    \paragraph{Accesso tramite DSL}
+    La compagnia telefonica funge anche da ISP. Si usa come canale la linea telefonica (che risulterà poi come canale asimmetrico) per 
+    scambiare i messaggi con un Digital Subscriber Line Access Multiplex (DSLAM) che si trova nella centrale locale. Il modem DSL 
+    residenziale converte i dati digitali in toni ad alta frequenza per poterli trasmettere sul cavo telefonico ed una arrivata al DSLAM 
+    essi vengono riconvertiti in segnali digitali. Si effettua multiplexing sulla banda di frequenza usata in modo da permettere l'uso 
+    della linea telefonica e l'accesso ad Internet in contemporanea. Gli accessi residenziali DSL più comuni sono: ADSL e VDSL.
+
+    \paragraph{Accesso via cavo}
+    Nell'accesso ad Internet via cavo si utilizzano le infrastrutture esistenti della televisione. Tra i più comuni vi è la rete di 
+    accesso ibrida con fibra ottica e cavo coassiale (HFC). Anche in questo caso vi è uno modem speciale detto cable modem che funziona 
+    verosimilmente come il DSLAM. Inoltre si fa uso dello standard DOCSIS per la suddivisione della banda.
+
+    \paragraph{FTTH}
+    Nell'accesso FTTX la fibra arriva fino ad un determinato punto X della rete, in particolare per l'accesso residenziale si usa FTTH, 
+    dove il collegamento in fibra ottica raggiunge una singola abitazione. La FTTH prevede che ogni abitazione abbia un Optical Network 
+    Terminator (ONT) connesso ad uno splitter ottico per più abitazioni e ad un Optical Line Terminator (OLT) situato nella centralina. 
+    L'OLT, tramite conversione da segnale ottico ad elettrico, si connette ad Internet tramite un router della compagnia, quindi 
+    collegandosi ad esso si può accedere ad Internet.
+
+\subsubsection{Accesso aziendale}
+    Si utilizza una rete LAN per connettere i router di bordo. La tecnologia più usata è Ethernet. Tuttavia vi è anche una tipologia di 
+    accesso a LAN wireless diffusa per i dispositivi mobili dove gli utenti possono inviare e ricevere pacchetti da e verso un access 
+    point wireless entro un raggio di pochi metri.
+
+    \begin{Note*}
+        Le reti mobili sono di varie generazioni, dalla gestione di segnali analogici a digitali a cambi di frequenze e velocità di 
+        trasmissione.
+    \end{Note*}    
+
+\end{document}

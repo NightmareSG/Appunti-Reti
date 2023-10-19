@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+    A livello di collegamento gli host e i router sono definiti come nodi mentre i canali di comunicazione che connettono i nodi sono 
+    detti link e possono essere cablati (wired) o senza cavi (wireless). Il compito del data-link è quello di trasferire i datagram, 
+    provenienti dal livello di rete, incapsulandoli in frame da un nodo ad un altro attraverso un link fisico.\\ \\
+    Il data-link è implementato su tutti i nodi tramite una Network Interface Card (NIC), costituita da un controllore a una o più porte.
+    Dal lato mittente. la NIC si occupa di incapsulare il datagram e segue il protocollo per accesso al canale e trasmissione. Dal lato 
+    ricevitore, estrae il datagram e lo trasmette al livello di rete. Può essere dotato di sistema di rilevazione degli errori.\\ \\
+    Oltre al trasporto dei datagram, i dettagli dei servizi possono variare in base al protocollo. I possibili servizi sono:
+    \begin{itemize}
+        \item Framing: incapsula i datagram in frame aggiungendo header e trailer;
+        \item Accesso al collegamento: protocollo Medium Access Control (MAC) che regola l'accesso al collegamento e la trasmissione 
+        dei frame tramite un indirizzo fisico contenuto nell'header;
+        \item Consegna affidabile: i protocolli garantiscono il trasporto senza errori dei datagram. Viene realizzato tramite 
+        acknowledgment, che conferma la ricezione dei frame, e la ritrasmissione, nel caso la consegna non avvenga come previsto;
+        \item Controllo del flusso: protocolli che regolano la velocità di trasmissione tra i nodi;
+        \item Rilevazione e correzione degli errori: gli errori possono essere generati da attenuazione e disturbi dei segnali. Si 
+        possono individuare gli errori tramite tecniche su bit di controllo.
+    \end{itemize}
+
+    \subsection{Rilevazione e correzione degli errori}
+    \subfile{Sotto/3-1-Rilevazione e correzione errori.tex}
+    \clearpage
+
+    
+
+\end{document}

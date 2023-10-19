@@ -18,6 +18,21 @@
 
     \paragraph*{Trasmissione in banda passante}
     Una trasmissione che colloca un segnale confinato in una certa banda di frequenza arbitraria in modo da far coesistere diversi 
-    segnali sullo stesso canale prende il nome di trasmissione in banda passante.
-    
+    segnali sullo stesso canale prende il nome di trasmissione in banda passante. In base a come si effettua la modulazione (ampiezze, 
+    frequenze, fase) sulla banda passante si ottiene una modulazione digitale.
+
+\subsubsection{Trasferimento dati}
+    Esistono due approcci per il trasferimento dati:
+    \begin{itemize}
+        \item Commutazione di circuito (Circuit Switching): si necessita la creazione di una sessione end-to-end per il quale si crea un 
+        circuito/canale costante. La banda viene suddivisa in più circuiti tramite Multiplexing che può avvenire per frequenza(FDM), 
+        per frequenza dedicata, o tempo (TDM), per frame e slot;
+        \item Commutazione di pacchetto (Packet Switching): ogni messaggio viene suddiviso in pacchetti che viaggiano nelle stesse 
+        risorse di rete. Ciò può causare saturazione delle risorse, congestione del canale per le code dei pacchetti, ritardi dovuti 
+        anche allo store \& forward, accodamento e disordine  nella ricezione dei pacchetti. 
+    \end{itemize}
+    Quindi si ha che la commutazione di pacchetto consente l'uso della rete a più utenti, mentre  per la commutazione di circuito si 
+    deve tenere conto del numero massimo di utenti per canale e le probabilità di utenti attivi contemporaneamente.
+   
+
 \end{document}

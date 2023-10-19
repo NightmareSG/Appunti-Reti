@@ -28,7 +28,7 @@
         \item frequenza: quante volte si ripete il valore massimo in un secondo.
     \end{itemize}
     La funzione caratteristica di un'onda è: 
-        %y = A*sen((2*pi*f*t + f(0)) = A*sen((2*pi)/T + f(0)) 
+        \(y = A \sin((2 \pi f t + f(0))) = A \sin((2 \pi / T) + f(0))\) 
     con:
     \begin{itemize}
         \item A: ampiezza;
@@ -37,18 +37,25 @@
         \item f: 1/T, frequenza, reciproco del periodo.
     \end{itemize}
     Se il canale trasmissivo è lineare allora vale il principio di sovrapposizione:\\
-    %se x1(t)>=y1(t) e x2(t)>=y2(t) e x3(t)>=y3(t) => x1(t)+x2(t)+x3(t) >= y1(t)+y2(t)+y3(t) \\
+    \(x_{1}(t) \ge y_{1}(t) \land x_{2}(t) \ge y_{2}(t) \land x_{3} \ge y_{3}(t) \implies x_{1}(t) + x_{2}(t) + x_{3}(t) \ge y_{1}(t) + y_{2}(t) + y_{3}(t)\)
     Quindi la somma di onde sinusoidali con frequenze multiple tra loro è ancora un segnale sinusoidale periodico.
     \begin{Note*}
         Le frequenze sono dette armoniche e la frequenza più bassa è detta fondamentale.
     \end{Note*}
-    Tramite Fourier si scoprì che una funzione periodica di periodo T può essere rappresentata come combinazione di un certo numero 
-    di funzioni sinusoidali e ciò è detta serie/trasformata di Fourier.\\ \\
-    Ciò aiuta a scomporre una qualsiasi onda in componenti più semplici. Si ha che: 
-    %g(t)=a0/2 + sum(n=1 to +inf)(an*sen(\omega*n*t)+ bn*cos(\omega*n*t)) con \omega = 2*pi*f
+    \noindent Tramite Fourier si scoprì che una funzione periodica di periodo T può essere rappresentata come combinazione di un certo 
+    numero di funzioni sinusoidali e ciò è detta serie/trasformata di Fourier.\\ \\
+    Ciò aiuta a scomporre una qualsiasi onda in componenti più semplici. Si ha che:
+    \[
+        g(t) = \frac{a_{0}}{2} + \sum\limits_{n = 1}^{\infty}{a_{n} \sin(\omega nt) + b_{n} \cos(\omega nt)}
+    \]
+    con \(\omega = 2 \pi f\)
     dove an e bn sono le ampiezze dell'n-esima armonica e si ottengono integrando tra 0 e T:
-    %an= 2/T * int(-T/2 to T/2)(g(t)*sen(omega*n*t))dt
-    %bn= 2/T * int(-T/2 to T/2)(g(t)*cos(omega*n*t))dt
+    \[
+        \begin{gathered}
+            a_{n} = \frac{2}{T} \int{-T/2}{T/2}{g(t) \sin(\omega nt)}{t} \\
+            b_{n} = \frac{2}{T} \int{-T/2}{T/2}{g(t) \cos(\omega nt)}{t} \\
+        \end{gathered}
+    \]
     I canali che utilizzano segnale elettrici si comportano in modo lineare quindi è possibile applicare l'analisi di Fourier. Questo è 
     utile a capire dopo quanto tempo un segnale di degrada a tal punto da influenzare la corretta codifica.
 
@@ -71,4 +78,7 @@
     \clearpage
 
     \subsection{Sistemi di telecomunicazioni}
+    \subfile{Sotto/2-3-Sistemi di telecomunicazioni.tex}
+    \clearpage
+
 \end{document}
