@@ -6,5 +6,22 @@
     controllo di parità, checksum e controllo a ridondanza ciclica (CRC). 
 
 \subsubsection{Controllo di parità}
-    
+    Vi sono due schemi che aggiungono un bit che assume un valore in modo tale da rendere pari, o dispari a secondo dello schema, i bit 
+    a 1. Una volta trasmesso il frame si controlla il numero di bit a 1 per verificare se lo schema è stato rispettato o meno, ovvero si 
+    verifica che non vi siano errori senza però sapere la sua posizione. Tuttavia se un errore cambia bit in numero pari, 
+    indipendentemente dallo schema, al ricevente non appariranno errori trattando erroneamente il frame come corretto. \\ \\
+    Si può optare per uno schema di parità bidimensionale, dove i bit dei dati vengono divisi in righe e colonne, ognuno con un proprio 
+    bit di parità. In questo modo si può anche risalire al bit di errore.
+
+\subsubsection{Checksum}
+    Nella tecnica di Checksum si prende la sequenza a n bit del dato e la si divide in parti da 16 bit. Di queste sottosequenze effettua 
+    la somma e ne effettua il complemento a 1 inviando il risultato. Il destinatario effettuerà lo stesso calcolo e sommerà il risultato 
+    al complemento a 1, se il risultato è una sequenza di 1 allora non sono presenti errori, altrimenti viene scartato.
+
+\subsubsection{Controllo a ridondanza ciclica}
+    Questa tecnica prevede l'uso di codici di controllo a ridondanza ciclica detti anche codici polinomiali. Si prende il dato D e lo si 
+    divide in insiemi da d bit, ognuno dei quali ha associato un polinomio b(x) di grado d-1. Mittente e destinatario si accordano su un 
+    certo r che sarà il grado del polinomio generatore G, quindi il trasmittente divide b(x) per G e accoda il resto ottenuto al 
+    messaggio inviandolo. Il destinatario conoscendo G si occuperà di dividere ciò che ha ricevuto per G, se il resto è 0 allora il 
+    messaggio è integro, altrimenti presenta errori. Si noti che il CRC è in grado di individuare errori inferiori a r + 1 bit.
 \end{document}
